@@ -22,8 +22,8 @@ public:
         }
         
         int pairs = 0;
-        for (int n : occur.end()) {
-            pairs += n * (n - 1) / 2;
+        for (pair<int, int> kv : occur) {
+            pairs += kv.second * (kv.second - 1) / 2;
         }
         
         return pairs;
