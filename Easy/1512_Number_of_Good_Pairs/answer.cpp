@@ -17,14 +17,13 @@ public:
     int numIdenticalPairs(vector<int>& nums) {
         unordered_map<int, int> occur;
         
-        for (int i = 0; i < nums.size(); i++) {
-            occur[nums[i]]++;
+        for (int n : nums) {
+            occur[n]++;
         }
         
         int pairs = 0;
-        for (auto i = occur.begin(); i != occur.end(); i++) {
-            int n = i->second;
-            pairs += n*(n-1)/2;
+        for (int n : occur.end()) {
+            pairs += n * (n - 1) / 2;
         }
         
         return pairs;
