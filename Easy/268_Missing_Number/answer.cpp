@@ -8,13 +8,10 @@ arithmetic progression and print missing
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        int ret = 0;
         int n = nums.size();
         int max = n*(n+1)/2;
         int real = accumulate(nums.begin(), nums.end(), 0);
         
-        ret = max - real;
-        
-        return ret;
+        return max - real;
     }
 };

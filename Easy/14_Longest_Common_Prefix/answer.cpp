@@ -17,16 +17,18 @@ public:
     string longestCommonPrefix(vector<string>& strs) {
         string ret = "";
         
-        if (strs.size() > 0) {
-            for (int i = 0; i < strs[0].size(); i++) {
-                char comp = strs[0][i];
-                for (int j = 0; j < strs.size(); j++) {
-                    if (comp != strs[j][i]) {
-                        return ret;
-                    }
+        if (strs.empty()) {
+            return ret;
+        }
+
+        for (int i = 0; i < strs[0].size(); i++) {
+            char comp = strs[0][i];
+            for (int j = 0; j < strs.size(); j++) {
+                if (comp != strs[j][i]) {
+                    return ret;
                 }
-                ret.push_back(comp);
             }
+            ret.push_back(comp);
         }
         
         return ret;
