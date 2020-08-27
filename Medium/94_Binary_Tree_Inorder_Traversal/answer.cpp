@@ -46,3 +46,22 @@ public:
         return ret;
     }
 };
+
+class Solution {
+public:
+    // NOTE: while it's not important for most case, stack is more efficient than heap
+    // And this looks more sexy. Just know that there can be stack overflows on some cases
+    void inorderTraversal_rec(vector<int>& out, TreeNode* node) {
+        if (!node)
+            return;
+        inorderTraversal_rec(out, node->left);
+        out.push_back(node->val);
+        inorderTraversal_rec(out, node->right);
+    }
+
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ret;
+        inorderTraversal_rec(ret, root);
+        return ret;
+    }
+}
