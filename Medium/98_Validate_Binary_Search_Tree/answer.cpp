@@ -20,6 +20,7 @@ if ()
 
 */
 
+// NOTE: not naive at all. seems fast and more memory efficient to me :/
 // naive solution
 class Solution {
 public:
