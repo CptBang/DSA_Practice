@@ -25,46 +25,34 @@ public:
         if (!root) {
             return {};
         }
-        queue<TreeNode*> parent;
         vector<vector<int>> ret;
-        
+        queue<TreeNode*> parent;
+        queue<TreeNode*> child;
         parent.push(root);
+
+        // NOTE: this way, you reuse your heap allocation
+        // no new vectors/queues are created on every level
+        // mind that the swap(c) function is O(1).
+        vector<int> level;
         while (!parent.empty()) {
-            queue<TreeNode*> child;
-            vector<int> level;
-            while(!parent.empty()) {
-                TreeNode* node = parent.front();
-                parent.pop();
-                level.push_back(node->val);
-                if (node->left) {
-                    child.push(node->left);    
-                }
-                if (node->right) {
-                    child.push(node->right);    
-                }
+            TreeNode* node = parent.front();
+            parent.pop();
+
+            level.push_back(node->val);
+            if (node->left) {
+                child.push(node->left);    
             }
-            ret.push_back(level);
-            parent = child;
+            if (node->right) {
+                child.push(node->right);    
+            }
+
+            if (parent.empty()) {
+                ret.push_back(level);
+                level.clear();
+                parent.swap(child);
+            }
         }
         
         return ret;
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
