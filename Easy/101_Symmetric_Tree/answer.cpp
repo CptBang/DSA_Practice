@@ -24,7 +24,7 @@ public:
         if (!left && !right) {
             return true;
         }
-        if ((!left || !right) || left->val != right->val) {
+        if (!left || !right || left->val != right->val) {
             return false;
         }
         
@@ -54,7 +54,7 @@ public:
             if (!cpR && !cpL) {
                 continue ;
             }
-            if ((!cpR || !cpL) || (cpR->val != cpL->val)) {
+            if (!cpR || !cpL || cpR->val != cpL->val) {
                 return false;
             }
             right.push(cpR->right);
